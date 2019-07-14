@@ -23,7 +23,6 @@ public class SendMessages implements Runnable {
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			String msg;
 			while (true) {
-				System.out.println("test");
 				msg = in.readLine();
 				if (msg.equals("exit")) {
 					System.out.println("disconnect chat");
@@ -61,7 +60,7 @@ public class SendMessages implements Runnable {
 	private void setID() {
 		try {
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			System.out.print("사용하실 닉네임을 설정해주세요 : ");
+			System.out.print("Set your use id : ");
 			this.ID = in.readLine();
 			//in.close();
 		} catch (IOException e) {

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 import Server.ServerThread;
+import Server.SendMessages;
 
 public class Main {
 	public static ArrayList<PrintWriter> List;
@@ -14,6 +15,8 @@ public class Main {
 		try {
 			ServerSocket Server = new ServerSocket(8888);
 			Socket Client = new Socket();
+			SendMessages th2 = new SendMessages();
+			th2.start();
 			System.out.println("Server Start");
 			while (true) {
 				Client = Server.accept();

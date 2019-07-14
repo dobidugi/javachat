@@ -23,7 +23,7 @@ public class ReceiveMessages implements Runnable {
 					Client.close();
 					break;
 				}
-				System.out.println("other : " + msg);	
+				System.out.println(msg);	
 			}
 		} catch (IOException e) {
 
