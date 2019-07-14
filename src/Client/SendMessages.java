@@ -15,7 +15,7 @@ public class SendMessages implements Runnable {
 
 	@Override
 	public void run() {
-		// class logic start 
+		// start logic 
 		setID();
 		makeSendWriter();
 		SendID();
@@ -62,7 +62,6 @@ public class SendMessages implements Runnable {
 			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 			System.out.print("Set your use id : ");
 			this.ID = in.readLine();
-			//in.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

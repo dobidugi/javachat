@@ -24,9 +24,9 @@ public class SendMessages extends Thread {
 	}
 
 	private void allUserMsg() {
-		for(int i=0;i<Main.List.size();i++) {
-			Main.List.get(i).println("Server : "+msg);
-			Main.List.get(i).flush();
+		for(int i=0;i<ServerController.List.size();i++) {
+			ServerController.List.get(i).println("Server : "+msg);
+			ServerController.List.get(i).flush();
 		}
 	}
 	private void makeInBuffer() {

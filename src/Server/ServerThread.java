@@ -54,9 +54,9 @@ public class ServerThread extends Thread {
 	private void allUserSendMsg() {
 		totalmsg = this.ID + " : " + msg;
 		System.out.println(totalmsg);
-		for (int i = 0; i < Main.List.size(); i++) {
-			Main.List.get(i).println(totalmsg);
-			Main.List.get(i).flush();
+		for (int i = 0; i < ServerController.List.size(); i++) {
+			ServerController.List.get(i).println(totalmsg);
+			ServerController.List.get(i).flush();
 		}
 	}
 
