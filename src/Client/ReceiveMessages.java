@@ -2,14 +2,18 @@ package Client;
 
 import java.lang.Runnable;
 import java.lang.Override;
+
 import java.net.Socket;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+import javax.swing.JTextArea;
+
 public class ReceiveMessages implements Runnable {
 	private Socket Client;
-
+	private JTextArea screen;
 	@Override
 	public void run() {
 		try {
@@ -23,14 +27,16 @@ public class ReceiveMessages implements Runnable {
 					Client.close();
 					break;
 				}
-				System.out.println(msg);	
+				System.out.println(msg);
+				screen.append(msg+"\n");
 			}
 		} catch (IOException e) {
 
 		}
 	}
 
-	ReceiveMessages(Socket Client) {
+	ReceiveMessages(Socket Client,JTextArea screen) {
 		this.Client = Client;
+		this.screen = screen;
 	}
 }

@@ -2,46 +2,51 @@ package Client;
 
 import java.lang.Runnable;
 import java.lang.Override;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+
 import java.net.Socket;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import javax.swing.JTextField;
 
 public class SendMessages implements Runnable {
 	private Socket Client;
 	private String ID;
 	private PrintWriter sendWriter;
+	private JTextField input;
 
 	@Override
 	public void run() {
-		// start logic 
+		// start logic
 		setID();
 		makeSendWriter();
 		SendID();
-		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			String msg;
-			while (true) {
-				msg = in.readLine();
-				if (msg.equals("exit")) {
-					System.out.println("disconnect chat");
-					Client.close();
-					in.close();
-					break;
+		input.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					String msg;
+					msg = input.getText();
+					if (msg.equals("exit")) {
+						System.out.println("disconnect chat");
+					}
+					sendWriter.println(msg);
+					input.setText("");
+					sendWriter.flush();
 				}
-				this.sendWriter.println(msg);
-				// System.out.println("나 : "+ msg);
-				this.sendWriter.flush();
 			}
-
-		} catch (IOException e) {
-
-		}
+		});
 	}
 
-	SendMessages(Socket Client) {
+	SendMessages(Socket Client, JTextField input) {
 		this.Client = Client;
+		this.input = input;
 	}
 
 	private void SendID() {
