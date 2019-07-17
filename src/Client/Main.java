@@ -13,6 +13,7 @@ public class Main {
 		ChatController Chat = new ChatController();
 		Chat.setInputText(design.getInputText());
 		Chat.setScreen(design.getScreen());
+		Chat.setFrame(design.getFrame());
 		System.out.println("I`m Client");
 		System.out.println("waiting for connect...");
 		try {

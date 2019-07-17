@@ -1,9 +1,12 @@
 package Server;
 
 import java.net.Socket;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+
+import javax.swing.JTextArea; 
 
 public class ServerThread extends Thread {
 	private Socket Client;
@@ -11,7 +14,8 @@ public class ServerThread extends Thread {
 	private String ID;
 	private String totalmsg;
 	private BufferedReader userin;
-
+	private JTextArea screen;
+	
 	@Override
 	public void run() {
 		super.run();
@@ -37,7 +41,6 @@ public class ServerThread extends Thread {
 			this.ID = userin.readLine();
 			msg = " join the chat";
 			allUserSendMsg();
-			inLog();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -53,7 +56,7 @@ public class ServerThread extends Thread {
 
 	private void allUserSendMsg() {
 		totalmsg = "[" + this.ID +"]"+ " " + msg;
-		System.out.println(totalmsg);
+		screen.append(totalmsg+'\n');
 		for (int i = 0; i < ServerController.List.size(); i++) {
 			ServerController.List.get(i).println(totalmsg);
 			ServerController.List.get(i).flush();
@@ -61,9 +64,9 @@ public class ServerThread extends Thread {
 	}
 
 	private void outLog() {
-		System.out.println(this.ID + " out the chat.");
 		try {
 			msg = " out the chat";
+			System.out.println('1');
 			allUserSendMsg();
 			Client.close();
 		} catch (Exception e) {
@@ -71,11 +74,12 @@ public class ServerThread extends Thread {
 		}
 	}
 	
-	private void inLog() {
-		System.out.println(this.ID+" join the chat.");
-	}
 
 	public void setSocket(Socket Client) {
 		this.Client = Client;
+	}
+	
+	public void setScreen(JTextArea screen) {
+		this.screen = screen;
 	}
 }

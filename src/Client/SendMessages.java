@@ -35,6 +35,12 @@ public class SendMessages implements Runnable {
 					msg = input.getText();
 					if (msg.equals("exit")) {
 						System.out.println("disconnect chat");
+						try {
+							Client.close();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 					sendWriter.println(msg);
 					input.setText("");

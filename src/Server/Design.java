@@ -1,4 +1,4 @@
-package Client;
+package Server;
 
 import java.awt.Color;
 
@@ -26,7 +26,6 @@ public class Design {
 	private void drawFrame() {
 		frame = new JFrame();
 	}
-		
 	
 	private void drawChatScreen() {
 		screen = new JTextArea();
