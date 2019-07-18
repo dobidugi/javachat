@@ -17,7 +17,7 @@ public class Main {
 			ip = setting.getIP();
 			port = setting.getPORT();
 			id = setting.getID();
-			if(ip!=null && port!=0 && id!=null) {
+			if(ip!=null || port!=0 || id!=null) {
 				break;
 			}
 			else { System.out.print("while settings"); }
