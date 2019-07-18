@@ -2,6 +2,7 @@ package Client;
 
 import Client.ChatController;
 import Client.Design;
+import Client.Setting;
 
 import java.net.Socket;
 
