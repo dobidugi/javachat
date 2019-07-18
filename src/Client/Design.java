@@ -6,12 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class Design {
 	
 	private JFrame frame;
 	private JTextField input;
 	private JTextArea screen;
+	private JScrollPane scroll;
 	
 	public void makeFrame() {
 		drawFrame();
@@ -30,7 +32,10 @@ public class Design {
 	
 	private void drawChatScreen() {
 		screen = new JTextArea();
-		screen.setBounds(1,1,400,300);
+		scroll = new JScrollPane(screen);
+		scroll.setBounds(1,1,400,300);
+		screen.setEditable(false);
+		screen.setCaretPosition(screen.getDocument().getLength());
 	}
 	
 	private void drawInputText() {
@@ -41,7 +46,7 @@ public class Design {
 	}
 	
 	private void addComponentFrame() {
-		frame.add(screen);
+		frame.add(scroll);
 		frame.add(input);
 	}
 	
