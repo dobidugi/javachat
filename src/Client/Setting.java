@@ -50,12 +50,6 @@ public class Setting {
 		ipfield.setBounds(51,1,100,20);
 		ipfield.setHorizontalAlignment(JTextField.CENTER);
 		frame.add(ipfield);
-		frame.addWindowListener(new java.awt.event.WindowAdapter() {
-		    @Override
-		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-				System.exit(0);
-		    }
-		});
 	}
 	
 	
@@ -111,6 +105,12 @@ public class Setting {
 	
 	private void drawFrame(){
 		frame = new JFrame();
+		frame.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+				System.exit(0);
+		    }
+		});
 	}
 	
 	public String getID() {
