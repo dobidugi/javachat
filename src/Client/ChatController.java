@@ -11,10 +11,12 @@ import Client.ReceiveMessages;
 import Client.SendMessages;
 
 public class ChatController {
+	
 	private Socket Client;
 	private JTextField input;
 	private JTextArea screen;
 	private JFrame frame;
+	private String ID;
 	
 	public void setSocket(Socket Client) {
 		this.Client = Client;
@@ -22,7 +24,7 @@ public class ChatController {
 	
 	private void makeThread() {
 		Runnable RecMsg = new ReceiveMessages(Client,screen);
-		Runnable SendMsg = new SendMessages(Client,input);
+		Runnable SendMsg = new SendMessages(Client,input,ID);
 		Thread th1 = new Thread(RecMsg);
 		Thread th2 = new Thread(SendMsg);
 		th1.start();
@@ -64,5 +66,9 @@ public class ChatController {
 	public void setFrame(JFrame frame) {
 		this.frame = frame;
 
+	}
+	
+	public void setID(String ID) {
+		this.ID = ID;
 	}
 }

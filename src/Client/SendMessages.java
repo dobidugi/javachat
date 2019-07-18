@@ -24,7 +24,6 @@ public class SendMessages implements Runnable {
 	@Override
 	public void run() {
 		// start logic
-		setID();
 		makeSendWriter();
 		SendID();
 		input.addKeyListener(new KeyAdapter() {
@@ -50,9 +49,10 @@ public class SendMessages implements Runnable {
 		});
 	}
 
-	SendMessages(Socket Client, JTextField input) {
+	SendMessages(Socket Client, JTextField input,String ID) {
 		this.Client = Client;
 		this.input = input;
+		this.ID = ID;
 	}
 
 	private void SendID() {
@@ -68,13 +68,4 @@ public class SendMessages implements Runnable {
 		}
 	}
 
-	private void setID() {
-		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-			System.out.print("Set your use id : ");
-			this.ID = in.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 }
